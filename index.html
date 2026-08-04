@@ -21,6 +21,16 @@
 <meta name="twitter:image" content="https://obkim-lgtm.github.io/clipo-contest/og.png">
 <meta name="description" content="에듀테크 교사 연구회 소속 초·중·고 선생님을 위한 AI 채점 잘 되는 평가 공모전. 1학기에 채점하신 답안을 CLIPO로 다시 돌려보고 링크와 소감을 보내주시면 응모 완료. 8/17 신청 시작, 9/6 마감. 총 시상 50만원.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+
+<!-- GA4 — CLIPO 속성(401851990). 이 페이지는 hostName이 clipo.ai가 아니라
+     기존 유입 분석 파이프라인(hostName=clipo.ai 필터)과 섞이지 않는다. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DZBF275ZV0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DZBF275ZV0');
+</script>
 <style>
   :root {
     --blue-900: #15205C;
@@ -1415,7 +1425,42 @@
     <div>© 2026 CLIPO · ㈜데이터드리븐</div>
     <div>에크연 × CLIPO 시즌 1 · AI 채점 잘 되는 평가 공모전</div>
   </div>
+  <div class="foot-bottom" style="margin-top:0; padding-top:14px; border-top:0;">
+    <div>이 페이지는 방문 통계 수집을 위해 Google Analytics를 사용합니다.</div>
+  </div>
 </footer>
+
+<script>
+/* 버튼별 클릭 집계 — GA4 이벤트 보고서에 그대로 뜨도록 이벤트명을 분리했다.
+   (맞춤 매개변수는 GA4에서 맞춤 측정기준 등록을 해야 보이므로 쓰지 않았다) */
+(function(){
+  function send(name){
+    if (typeof gtag === 'function') gtag('event', name);
+  }
+  var APPLY = 'forms.gle/2TiEkCh4V86u84gK6';
+  var SUBMIT = 'forms.gle/vct6N1BeGhTH9kZw7';
+
+  document.querySelectorAll('a[href*="forms.gle"]').forEach(function(a){
+    var href = a.getAttribute('href') || '';
+    var name;
+    if (href.indexOf(SUBMIT) > -1) {
+      name = 'submit_form';                       // 응모 폼 열기
+    } else if (href.indexOf(APPLY) > -1) {
+      if (a.classList.contains('topbar-cta'))      name = 'apply_topbar';
+      else if (a.closest('.hero'))                 name = 'apply_hero';
+      else                                         name = 'apply_final';
+    }
+    if (name) a.addEventListener('click', function(){ send(name); });
+  });
+
+  // 어떤 질문이 많이 열리는지 — 문구 개선 근거로 쓴다
+  document.querySelectorAll('details.qa').forEach(function(d, i){
+    d.addEventListener('toggle', function(){
+      if (d.open) send('faq_open_' + (i + 1));
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
