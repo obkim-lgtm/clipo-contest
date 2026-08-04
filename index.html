@@ -1075,6 +1075,27 @@
     .foot .row { font-size: 14px; line-height: 1.7; }
     .foot-bottom { margin-top: 22px; padding-top: 16px; }
   }
+
+  /* ===== 태블릿 · 작은 노트북 (769~1100px) =====
+     모바일 블록과 겹치지 않도록 min-width로 하한을 둔다 */
+  @media (min-width: 769px) and (max-width: 1100px) {
+    section { padding: 84px 24px; }
+    .why.compact { padding: 64px 24px; }
+    .hero { padding: 64px 24px 84px; }
+
+    .hero-title { font-size: 54px; }
+    .hero-desc { font-size: 17px; }
+    .section-title { font-size: 36px; }
+    .final-title { font-size: 42px; }
+    .final { padding: 100px 24px; }
+
+    /* 4열·3열 그리드가 좁아져 카드가 세로로 길어지는 구간 */
+    .hero-meta { grid-template-columns: repeat(2, 1fr); max-width: 640px; }
+    .easy-row { grid-template-columns: repeat(2, 1fr); }
+    .format-grid { grid-template-columns: 1fr 1fr; }
+    .format-grid .fcard.main { grid-column: 1 / -1; }
+    .foot { grid-template-columns: 1fr 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -1103,7 +1124,7 @@
     </h1>
     <p class="hero-desc">
       2학기 수행·서논술형 <strong>평가계획과 활동지</strong>를 모읍니다.<br>
-      학기 초에 세우신 그대로면 충분합니다.
+      이미 세우신 계획을 CLIPO에 담고, 그 화면을 캡처해 주시면 됩니다.
     </p>
     <div class="hero-cta-row">
       <a class="cta-primary" href="#apply">
@@ -1170,7 +1191,7 @@
         </ul>
         <span class="ftag">필수 · 1건 이상</span>
         <div class="fnote">
-          학교에서 쓰시는 양식 그대로 괜찮습니다. 한글·엑셀·PDF·CLIPO 화면 캡처 모두 받습니다.
+          응모는 <strong style="color:#fff;">CLIPO 화면 캡처</strong>로 받습니다. 계획 내용을 새로 쓰실 필요는 없고, 세워두신 그대로 CLIPO에 담아 캡처해 주시면 됩니다.
         </div>
       </div>
 
@@ -1178,7 +1199,7 @@
         <div class="num">02 · 함께 주시면 좋아요</div>
         <h3 class="ftitle">활동지 · 문항</h3>
         <p class="fdesc">
-          실제로 학생에게 나가는 활동지나 문항지.
+          CLIPO에 올리신 활동지나 문항 화면.
           계획과 세트면 다른 선생님이 바로 씁니다.
         </p>
         <span class="ftag">권장 · 심사 가점</span>
@@ -1288,7 +1309,16 @@
         <summary>CLIPO를 아직 안 써봤는데 응모할 수 있나요?</summary>
         <div class="a">
           <strong>가능합니다.</strong> 신청하시면 다음 날 AI 크레딧 100개(30일)를 보내드립니다.
-          응모하시는 평가계획도 CLIPO에서 만드신 것이 아니어도 괜찮습니다.
+          그 크레딧으로 평가계획을 CLIPO에 담아보시고, 그 화면을 캡처해 응모해 주시면 됩니다.
+        </div>
+      </details>
+      <details class="qa">
+        <summary>한글 파일로 만든 계획인데, 그대로 내면 안 되나요?</summary>
+        <div class="a">
+          <strong>CLIPO에 옮겨 담은 뒤 화면을 캡처해 주세요.</strong>
+          같은 형식으로 모여야 다른 선생님이 바로 가져다 쓸 수 있고,
+          채점 기준이 CLIPO에 등록돼 있어야 실제로 적용해 볼 수 있기 때문입니다.
+          내용을 새로 쓰실 필요는 없고, 세워두신 계획을 옮겨 담으시면 됩니다.
         </div>
       </details>
       <details class="qa">
