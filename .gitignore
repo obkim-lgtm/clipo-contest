@@ -12,3 +12,6 @@ archive_*.html
 desktop.ini
 Thumbs.db
 .DS_Store
+
+# 임시 빌드·확인용 파일
+_*.html
