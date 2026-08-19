@@ -1142,6 +1142,61 @@
     .pre-note { font-size: 13px; }
   }
 
+  /* ===== 마지막 CTA 2단계 (신청 → 응모) ===== */
+  .cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    vertical-align: middle;
+    gap: 10px;
+    background: #fff;
+    color: var(--ink);
+    border: 1.5px solid var(--blue-200);
+    font-size: 18px;
+    font-weight: 700;
+    padding: 21px 34px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(15, 20, 48, 0.06);
+    transition: transform 0.18s, border-color 0.18s;
+  }
+  .cta-secondary:hover { transform: translateY(-2px); border-color: var(--blue-500); }
+  .cta-secondary .arrow {
+    width: 22px; height: 22px;
+    background: var(--blue-100);
+    color: var(--blue-700);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .final-steps {
+    margin-top: 8px;
+    display: flex;
+    gap: 22px;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .fstep { display: flex; flex-direction: column; align-items: center; gap: 11px; }
+  .fstep-num {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    color: var(--blue-700);
+    background: #fff;
+    border: 1px solid var(--blue-200);
+    padding: 5px 12px;
+    border-radius: 999px;
+    line-height: 1.3;
+  }
+  .fstep-note { font-size: 14px; color: var(--ink-3); line-height: 1.5; }
+  @media (max-width: 768px) {
+    .final-steps { flex-direction: column; gap: 24px; }
+    .fstep { width: 100%; }
+    .cta-secondary { padding: 18px 28px; font-size: 16px; width: 100%; }
+  }
+
   /* ===== 태블릿 · 작은 노트북 (769~1100px) =====
      모바일 블록과 겹치지 않도록 min-width로 하한을 둔다 */
   @media (min-width: 769px) and (max-width: 1100px) {
@@ -1443,10 +1498,24 @@
     모인 사례는 정리해서<br>
     다른 선생님들의 평가 설계에 도움이 되도록 공유합니다.
   </p>
-  <a class="cta-primary" href="https://forms.gle/2TiEkCh4V86u84gK6" target="_blank" rel="noopener">
-    참가 신청하기
-    <span class="arrow">→</span>
-  </a>
+  <div class="final-steps">
+    <div class="fstep">
+      <span class="fstep-num">1단계 · 지금</span>
+      <a class="cta-primary" href="https://forms.gle/2TiEkCh4V86u84gK6" target="_blank" rel="noopener">
+        참가 신청하기
+        <span class="arrow">→</span>
+      </a>
+      <span class="fstep-note">AI 크레딧 100개를 다음 날 보내드립니다</span>
+    </div>
+    <div class="fstep">
+      <span class="fstep-num">2단계 · 채점해 보신 뒤</span>
+      <a class="cta-secondary" href="https://forms.gle/vct6N1BeGhTH9kZw7" target="_blank" rel="noopener">
+        공모 응모하기
+        <span class="arrow">→</span>
+      </a>
+      <span class="fstep-note">9월 13일(일)까지 언제든 하실 수 있습니다</span>
+    </div>
+  </div>
   <div class="final-meta">
     신청 · 응모 기간 <strong>2026. 8. 24 · 월 ~ 9. 13 · 일</strong>
   </div>
@@ -1500,7 +1569,7 @@
     var href = a.getAttribute('href') || '';
     var name;
     if (href.indexOf(SUBMIT) > -1) {
-      name = 'submit_form';                       // 응모 폼 열기
+      name = a.closest('.final') ? 'submit_final' : 'submit_steps';
     } else if (href.indexOf(APPLY) > -1) {
       if (a.classList.contains('topbar-cta'))      name = 'apply_topbar';
       else if (a.closest('.hero'))                 name = 'apply_hero';
