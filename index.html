@@ -1109,6 +1109,39 @@
   }
   .estep .step-link:hover { border-bottom-color: var(--blue-600); }
 
+  /* ===== 사전 연수 안내 (기간 지나면 스크립트가 제거) ===== */
+  .prenotice { padding: 36px 28px 0; }
+  .pre-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    background: var(--blue-50);
+    border: 1px solid var(--blue-100);
+    border-radius: 16px;
+    padding: 20px 24px;
+  }
+  .pre-tag {
+    flex-shrink: 0;
+    background: var(--blue-600);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 7px 12px;
+    border-radius: 999px;
+    line-height: 1;
+  }
+  .pre-text { flex: 1; min-width: 260px; font-size: 16px; color: var(--ink-3); line-height: 1.6; }
+  .pre-text strong { display: block; margin-bottom: 2px; font-size: 17px; font-weight: 800; color: var(--ink); }
+  .pre-note { font-size: 14px; color: var(--ink-4); }
+  @media (max-width: 768px) {
+    .prenotice { padding: 24px 20px 0; }
+    .pre-card { padding: 16px 18px; gap: 12px; }
+    .pre-text { font-size: 15px; }
+    .pre-text strong { font-size: 16px; }
+    .pre-note { font-size: 13px; }
+  }
+
   /* ===== 태블릿 · 작은 노트북 (769~1100px) =====
      모바일 블록과 겹치지 않도록 min-width로 하한을 둔다 */
   @media (min-width: 769px) and (max-width: 1100px) {
@@ -1188,7 +1221,22 @@
   </div>
 </section>
 
+<!-- ===== 사전 온라인 연수 (8/21 22시가 지나면 아래 스크립트가 자동으로 제거) ===== -->
+<section class="prenotice" id="prenotice">
+  <div class="container">
+    <div class="pre-card">
+      <span class="pre-tag">사전 온라인 연수</span>
+      <div class="pre-text">
+        <strong>8월 21일(금) 저녁 8시 ~ 10시</strong>
+        AI 채점이 선생님 기준과 잘 맞으려면 채점 기준을 어떻게 써야 하는지 함께 짚어봅니다. 참여는 자유입니다.
+      </div>
+      <span class="pre-note">신청 안내는 에듀테크 교사 연구회 채널에서</span>
+    </div>
+  </div>
+</section>
+
 <!-- ===== Format ===== -->
+
 <section class="format">
   <div class="container">
     <span class="section-eyebrow">응모 방법</span>
@@ -1460,6 +1508,12 @@
     }
     if (name) a.addEventListener('click', function(){ send(name); });
   });
+
+  // 사전 연수가 끝나면 안내를 자동으로 감춘다 — 끝난 일정이 남아 있지 않도록
+  var pre = document.getElementById('prenotice');
+  if (pre && Date.now() > new Date('2026-08-21T22:00:00+09:00').getTime()) {
+    pre.parentNode.removeChild(pre);
+  }
 
   // 어떤 질문이 많이 열리는지 — 문구 개선 근거로 쓴다
   document.querySelectorAll('details.qa').forEach(function(d, i){
