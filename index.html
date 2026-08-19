@@ -1197,6 +1197,28 @@
     .cta-secondary { padding: 18px 28px; font-size: 16px; width: 100%; }
   }
 
+  /* ===== 시상 영역 밀도 조정 + 참가상 4번째 칸 ===== */
+  .prize-band { margin-top: 40px; padding: 36px 30px; }
+  .prize-amount { font-size: 50px; }
+  .prize-count { margin-bottom: 28px; }
+  .prize-tiers { grid-template-columns: repeat(4, 1fr); max-width: 880px; gap: 12px; }
+  .ptier { padding: 22px 12px; }
+  .pmedal { font-size: 34px; margin-bottom: 10px; }
+  .ptier.extra {
+    background: linear-gradient(180deg, #FFFBEF 0%, var(--warm-100) 100%);
+    border-color: var(--warm-500);
+  }
+  .ptier.extra .pname { color: var(--warm-700); }
+  .ptier.extra .pamount { font-size: 22px; color: var(--warm-700); }
+  @media (max-width: 768px) {
+    .prize-tiers { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .ptier { padding: 16px 10px; }
+    .pmedal { font-size: 26px; margin-bottom: 6px; }
+    .ptier.extra .pamount { font-size: 17px; }
+    .prize-amount { font-size: 38px; }
+    .prize-count { margin-bottom: 20px; }
+  }
+
   /* ===== 태블릿 · 작은 노트북 (769~1100px) =====
      모바일 블록과 겹치지 않도록 min-width로 하한을 둔다 */
   @media (min-width: 769px) and (max-width: 1100px) {
@@ -1270,7 +1292,7 @@
       </div>
       <div class="meta-card">
         <div class="meta-label">총 상금</div>
-        <div class="meta-value">50만원<span class="sub">1~3등 5명 · 참가상 20명</span></div>
+        <div class="meta-value">50만원<span class="sub">1~3등 5분 · 참가상 20분 추첨</span></div>
       </div>
     </div>
   </div>
@@ -1392,7 +1414,7 @@
     <div class="prize-band">
       <div class="prize-total">TOTAL PRIZE</div>
       <div class="prize-amount">50만원</div>
-      <div class="prize-count">1~3등 총 다섯 분께</div>
+      <div class="prize-count">상금은 1~3등 다섯 분께</div>
 
       <div class="prize-tiers">
         <div class="ptier">
@@ -1413,12 +1435,12 @@
           <div class="pamount">5만원</div>
           <div class="pcount">2분</div>
         </div>
-      </div>
-
-      <div class="pextra">
-        <span>참가상 커피 쿠폰</span>
-        <span class="sep">·</span>
-        <span class="muted">응모자 중 20명 추첨</span>
+        <div class="ptier extra">
+          <div class="pmedal">☕</div>
+          <div class="pname">참가상</div>
+          <div class="pamount">커피 쿠폰</div>
+          <div class="pcount">20분 추첨</div>
+        </div>
       </div>
     </div>
   </div>
